@@ -36,9 +36,31 @@ prep_dict = {'A thirty-second note triplet is equal in duration to a:': ['Quarte
 
 import pandas as pd
 import random
+import time
 
 prep = pd.read_csv('preparatory.csv')
-print(prep.head())
 
-#for i in range(10):
-#    question, answer = random.choice(list(prep_dict.items()))
+result = 0
+
+for i in range(3):
+
+    question, answer = random.choice(list(prep_dict.items()))
+
+    the_answer = prep.Answer[prep.Question == question].iloc[0]
+
+    print(f"{i+1}. {question}\n   a. {answer[0]}\n   b. {answer[1]}\n   c. {answer[2]}\n   d. {answer[3]}\n")
+
+    guess = input('Your answer is: ')
+
+    time.sleep(2)
+
+    if guess == the_answer:
+        print('\nWell done!\n')
+        result += 1
+    else:
+        print('\nIncorrect answer!\n')    
+
+    time.sleep(4) 
+
+print('-'*40)    
+print(f'You answered correctly {result} out of {i+1} questions.')
