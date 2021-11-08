@@ -34,6 +34,16 @@ prep_dict = {'A thirty-second note triplet is equal in duration to a:': ['Quarte
              'How many semitones are from Fa to Do#?': [6, 5, 8, 9],
              }
 
+first_dict = {'How many 16th notes does a dotted quarter note have;': [6, 3, 5, 4],
+              'The Do-Re interval is equal to a:': ['Tone', 'Semitone', 'Tri-semitone', 'Enharmonic equivalent'],
+              'The Sol-La interval is equal to a;': ['Tone', 'Semitone', 'Tri-semitone', 'Enharmonic equivalent'],
+              'The Sol-La# interval is equal to a:': ['Tone', 'Semitone', 'Tri-semitone', 'Enharmonic equivalent'],
+              'The Re-Re# interval is equal to a;': ['Tone', 'Semitone', 'Tri-semitone', 'Enharmonic equivalent'],
+              'The Si-Do interval is equal to a:': ['Tone', 'Semitone', 'Tri-semitone', 'Enharmonic equivalent'],
+              'The Mi#-Fa interval is equal to a:': ['Tone', 'Semitone', 'Tri-semitone', 'Enharmonic equivalent'],
+              'The key signature of the Do# major scale is:':['Nothing', 'Fa Do Sol', 'Fa Do', 'Fa Do Sol Re La Mi Si']
+              }             
+
 import pandas as pd
 import random
 import time
