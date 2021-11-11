@@ -73,60 +73,64 @@ import pandas as pd
 import random
 import time
 
-prep = pd.read_csv('preparatory.csv')
-first = pd.read_csv('first_theory.csv')
+# load the files that contain all the questions-answers for the preparatory quiz and the first-theory quiz 
+prep_df = pd.read_csv('preparatory.csv')
+first_df = pd.read_csv('first_theory.csv')
 
-pick = input('Pick a quiz:\n\nPress 1 for a preparatory quiz\nPress 2 for a 1st theory quiz\n\nYour Pick: ')
-print('-'*43)  
+print('-'*100)
 
+# prompt user to select a grade
+pick_grade = input('Choose your grade:\n\nPress 0 for Preparatory\nPress 1 for 1st Theory\n\n: ')
+
+print('-'*100)  
+time.sleep(1)
+print('Generating quiz......')
+time.sleep(2)
+print('-'*100) 
+
+# generate a multiple choice question
+def generate_question(grade):
+
+    if grade == '0':
+        # select randomly a pair of question-possible answers from the prep_dict
+        question, answer = random.choice(list(prep_dict.items()))
+        # locate the correct answer to the question in the prep dataframe
+        correct_answer = prep_df.Answer[prep_df.Question == question].iloc[0]
+        # remove the questions-answers pair from the dictionary
+        prep_dict.pop(question)
+
+        return question, answer, correct_answer
+
+    elif grade == '1':
+        # select randomly a pair of question-possible answers from the first_dict
+        question, answer = random.choice(list(first_dict.items()))
+        # locate the correct answer to the question in the first dataframe
+        correct_answer = first_df.Answer[first_df.Question == question].iloc[0] 
+        # remove the questions-answers pair from the dictionary
+        first_dict.pop(question)
+
+        return question, answer, correct_answer    
+        
+# set a counter for the result
 result = 0
 
-if pick == '1':
+for i in range(2):
 
-    for i in range(3):
+    question, answer, correct_answer = generate_question(pick_grade)
 
-        question, answer = random.choice(list(prep_dict.items()))
+    print(f"{i+1}. {question}\n   a. {answer[0]}\n   b. {answer[1]}\n   c. {answer[2]}\n   d. {answer[3]}\n")
 
-        the_answer = prep.Answer[prep.Question == question].iloc[0]
+    user_answer = input('Your answer is: ')
 
-        print(f"{i+1}. {question}\n   a. {answer[0]}\n   b. {answer[1]}\n   c. {answer[2]}\n   d. {answer[3]}\n")
+    time.sleep(2)
+    # check the user's answer and add a point for each correct answer
+    if user_answer == correct_answer:
+        print('\nWell done!\n')
+        result += 1
+    else:
+        print('\nIncorrect answer!\n')    
 
-        guess = input('Your answer is: ')
+    time.sleep(3) 
 
-        time.sleep(2)
-
-        if guess == the_answer:
-            print('\nWell done!\n')
-            result += 1
-        else:
-            print('\nIncorrect answer!\n')    
-
-        time.sleep(4) 
-
-    print('-'*43)    
-    print(f'You answered correctly {result} out of {i+1} questions.')    
-    
-elif pick == '2':
-
-    for i in range(3):
-
-        question, answer = random.choice(list(first_dict.items()))
-
-        the_answer = first.Answer[first.Question == question].iloc[0]    
-
-        print(f"{i+1}. {question}\n   a. {answer[0]}\n   b. {answer[1]}\n   c. {answer[2]}\n   d. {answer[3]}\n")
-
-        guess = input('Your answer is: ')
-
-        time.sleep(2)
-
-        if guess == the_answer:
-            print('\nWell done!\n')
-            result += 1
-        else:
-            print('\nIncorrect answer!\n')    
-
-        time.sleep(4) 
-
-    print('-'*43)    
-    print(f'You answered correctly {result} out of {i+1} questions.')
+print('-'*43)    
+print(f'You answered correctly {result} out of {i+1} questions.')    
