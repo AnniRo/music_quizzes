@@ -13,21 +13,22 @@ The Mi-Fa? interval is equal to a:,d,Enharmonic equivalent
 The La#-Si? interval is equal to a:,d,Enharmonic equivalent
 The Sol-La# interval is equal to a:,c,Tri-Semitone
 The Mi-Fa interval is equal to a:,b,Semitone
-How many semitones are from La to Do#?,d,4
-How many semitones are from Fa to Si?,b,6
-How many semitones are from Do to Fa?,a,5
-How many semitones are from Re# to Fa#?,a,2
-How many semitones are from Do to the next Do?,d,12
-How many semitones are from Fa to Do#?,c,8
+The Do-Re interval is equal to a:,a,Tone
+What is the key signature of the Do# major scale?,d,Fa Do Sol Re La Mi Si
+What is the key signature of the Fa# major scale?,a,Fa Do Sol Re La Mi
+What is the key signature of the Do major scale?,d,None
+What is the key signature of the Re major scale?,c,Fa Do
+What is the key signature of the Fa major scale?,b,Si
+What is the key signature of the La major scale?,c,Fa Do Sol
+What is the key signature of the Mi?  major scale?,a,Si Mi La
+What is the key signature of the Si?  major scale?,c,Si Mi
+What is the key signature of the La?  major scale?,d,Si Mi La Re
+What is the key signature of the Mi major scale?,b,Fa Do Sol Re
+What is the key signature of the Sol major scale?,d,Fa
 How many 8th notes does a dotted half note have?,b,6
 How many 8th notes does a dotted quarter note have?,a,3
 How many 16th notes does a dotted quarter note have?,a,6
 How many 16th notes does a quarter note have?,b,4
 How many 16th notes does a half note have?,c,8
-How many 64th notes does a whole note have?,b,64
-An eighth note triplet is equal in duration to a:,a,Quarter note
-A sixteenth note triplet is equal in duration to a:,c,Eighth note
-A thirty-second note triplet is equal in duration to a:,d,Sixteenth note
-A quarter note triplet is equal in duration to a:,b,Half note
 The order of flats is:,d,Si Mi La Re Sol Do Fa
 The order of sharps is:,c,Fa Do Sol Re La Mi Si
