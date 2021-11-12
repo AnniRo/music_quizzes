@@ -82,11 +82,13 @@ print('-'*100)
 # prompt user to select a grade
 pick_grade = input('Choose your grade:\n\nPress 0 for Preparatory\nPress 1 for 1st Theory\n\n: ')
 
+print('\n')
 print('-'*100)  
 time.sleep(1)
 print('Generating quiz......')
 time.sleep(2)
-print('-'*100) 
+print('-'*100)
+print('\n') 
 
 # generate a multiple choice question
 def generate_question(grade):
@@ -105,32 +107,49 @@ def generate_question(grade):
         # select randomly a pair of question-possible answers from the first_dict
         question, answer = random.choice(list(first_dict.items()))
         # locate the correct answer to the question in the first dataframe
-        correct_answer = first_df.Answer[first_df.Question == question].iloc[0] 
+        correct_answer = first_df.Answer[first_df.Question == question].iloc[0]
         # remove the questions-answers pair from the dictionary
         first_dict.pop(question)
 
         return question, answer, correct_answer    
-        
-# set a counter for the result
-result = 0
 
-for i in range(2):
+# create a multiple choice quiz
+def generate_quiz():        
+    # set a counter for the result
+    result = 0
 
-    question, answer, correct_answer = generate_question(pick_grade)
+    for i in range(1):
 
-    print(f"{i+1}. {question}\n   a. {answer[0]}\n   b. {answer[1]}\n   c. {answer[2]}\n   d. {answer[3]}\n")
+        question, answer, correct_answer = generate_question(pick_grade)
 
-    user_answer = input('Your answer is: ')
+        print(f"{i+1}. {question}\n   a. {answer[0]}\n   b. {answer[1]}\n   c. {answer[2]}\n   d. {answer[3]}\n")
 
-    time.sleep(2)
-    # check the user's answer and add a point for each correct answer
-    if user_answer == correct_answer:
-        print('\nWell done!\n')
-        result += 1
-    else:
-        print('\nIncorrect answer!\n')    
+        user_answer = input('Your answer is: ')
 
-    time.sleep(3) 
+        time.sleep(2)
+        # check the user's answer and add a point for each correct answer
+        if user_answer == correct_answer:
+            print('\nWell done!\n')
+            result += 1
+        else:
+            print('\nIncorrect answer!\n')    
 
-print('-'*43)    
-print(f'You answered correctly {result} out of {i+1} questions.')    
+        time.sleep(3) 
+
+    print('-'*100)    
+    print(f'You answered correctly {result} out of {i+1} questions.')
+    print('-'*100)
+
+generate_quiz()
+
+
+
+while True:
+    time.sleep(1)
+    # prompt user to retake a quiz
+    retake = input('\nRetake quiz (y/n)\n:')
+    print('-'*100)
+    if retake == 'y':
+        print('\n')
+        generate_quiz()
+    

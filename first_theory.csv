@@ -9,8 +9,8 @@ The Si#-Do interval is equal to a:,d,Enharmonic equivalent
 The Mi#-Fa interval is equal to a:,d,Enharmonic equivalent
 The Si-Do# interval is equal to a:,a,Tone
 The Si-Do interval is equal to a:,b,Semitone
-The Mi-Fa? interval is equal to a:,d,Enharmonic equivalent
-The La#-Si? interval is equal to a:,d,Enharmonic equivalent
+The Mi-Fa♭ interval is equal to a:,d,Enharmonic equivalent
+The La#-Si♭ interval is equal to a:,d,Enharmonic equivalent
 The Sol-La# interval is equal to a:,c,Tri-Semitone
 The Mi-Fa interval is equal to a:,b,Semitone
 The Do-Re interval is equal to a:,a,Tone
@@ -20,9 +20,9 @@ What is the key signature of the Do major scale?,d,None
 What is the key signature of the Re major scale?,c,Fa Do
 What is the key signature of the Fa major scale?,b,Si
 What is the key signature of the La major scale?,c,Fa Do Sol
-What is the key signature of the Mi?  major scale?,a,Si Mi La
-What is the key signature of the Si?  major scale?,c,Si Mi
-What is the key signature of the La?  major scale?,d,Si Mi La Re
+What is the key signature of the Mi♭ major scale?,a,Si Mi La
+What is the key signature of the Si♭ major scale?,c,Si Mi
+What is the key signature of the La♭ major scale?,d,Si Mi La Re
 What is the key signature of the Mi major scale?,b,Fa Do Sol Re
 What is the key signature of the Sol major scale?,d,Fa
 How many 8th notes does a dotted half note have?,b,6
