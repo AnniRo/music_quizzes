@@ -1,5 +1,4 @@
-# Preparatory quizzes dictionary
-
+# question and possible answers dictionary for preparatory grade
 prep_dict = {'A thirty-second note triplet is equal in duration to a:': ['Quarter note', 'Half note', 'Eighth note', 'Sixteenth note'],
              'How many 8th notes does a dotted half note have?': [3, 6, 5, 4],
              'The Sol-La interval is equal to a:': ['Tone', 'Semitone', 'Tri-semitone', 'Enharmonic equivalent'],
@@ -33,7 +32,7 @@ prep_dict = {'A thirty-second note triplet is equal in duration to a:': ['Quarte
              'How many semitones are from Do to the next Do?': [13, 14, 11, 12],
              'How many semitones are from Fa to Do#?': [6, 5, 8, 9],
              }
-
+# question and possible answers dictionary for 1st grade
 first_dict = {'How many 16th notes does a dotted quarter note have?': [6, 3, 5, 4],
               'The Do-Re interval is equal to a:': ['Tone', 'Semitone', 'Tri-semitone', 'Enharmonic equivalent'],
               'The Sol-La interval is equal to a:': ['Tone', 'Semitone', 'Tri-semitone', 'Enharmonic equivalent'],
@@ -69,18 +68,42 @@ first_dict = {'How many 16th notes does a dotted quarter note have?': [6, 3, 5, 
               'What is the key signature of the Sol major scale?': ['Si Mi La Re Sol Do', 'Fa Do Sol Re', 'Si Mi La Re Sol Do Fa', 'Fa'],
               }             
 
+# question and possible answers dictionary for 2nd grade
+second_dict = {'The Mi-La interval is a:': ['Perfect 4th', 'Perfect 5th', 'Augmented 4th', 'Diminished 5th'],
+               'The Fa#-Do# interval is a:': ['Perfect 5th', 'Diminished 5th', 'Augmented 5th', 'Perfect 4th'],
+               'The Mi♭-La♭ interval is a:': ['Diminished 5th', 'Perfect 4th', 'Augmented 4th', 'Diminished 4th'],
+               'The La-Re# interval is a:': ['Augmented 4th', 'Perfect 4th', 'Diminished 4th', 'Perfect 5th'],
+               'The Do-La# interval is a:': ['Diminished 6th', 'Minor 6th', 'Major 6th', 'Augmented 6th'],
+               'A minor third interval consists of:': ['3 semitones', '3 tones', '2 semitones', '4 semitones'],
+               'The relative major of a minor key:': ['is a minor third below', 'is a minor third above', 'has the same tonic', 'is a note below'],
+               'The relative major of Do minor:': ['Mi major', 'Mi♭ major', 'Mi# major', 'Re# major'],
+               'The relative major of Re minor:': ['Mi# major', 'Fa# major', 'Fa major', 'Sol♭ major'],
+               'The Si-Do interval is a:': ['Diminished 2nd', 'Augmented 2nd', 'Minor 2nd', 'Major 2nd'],
+               'The Do#-Fa# interval is a:': ['Diminished 4th', 'Augmented 4th', 'Perfect 4th', 'Diminished 5th'],
+               'The Do#-La♭ interval is a:': ['Diminished 6th', 'Minor 6th', 'Major 6th', 'Augmented 6th'],
+               'The Do-Si♭ interval is a:': ['Diminished 7th', 'Minor 7th', 'Major 7th', 'Augmented 7th'],
+               'The relative keys have:': ['The same key signature', 'Different key signature', 'The same tonic', 'The same leading tone'],
+               'When descending a melodic minor scale, what do we do to the 6th and 7th notes?': ['Add a sharp', 'Add a flat', 'Raise both by a semitone', 'Lower both by a semitone'],
+               'The Re-Fa interval is a:': ['Minor 3rd', 'Major 3rd', 'Augmented 2nd', 'Perfect 4th'],
+               'The Sol#-La interval is a:': ['Major 2nd', 'Minor 2nd', 'Minor 2nd', 'Major 3rd'],
+               'The Re#-Fa interval is a:': ['Major 2nd', 'Diminished 3rd', 'Minor 3rd', 'Augmented 2nd'],
+               'The Si-Re# interval is a:': ['Minor 3rd', 'Major 3rd', 'Augmented 3rd', 'Diminished 3rd'],
+               'The Sol-Si interval is a:': ['Diminished 3rd', 'Minor 3rd', 'Major 3rd', 'Augmented 3rd'],
+               }
+
 import pandas as pd
 import random
 import time
 
 # load the files that contain all the questions-answers for the preparatory quiz and the first-theory quiz 
 prep_df = pd.read_csv('preparatory.csv')
-first_df = pd.read_csv('first_theory.csv')
+first_df = pd.read_csv('first_grade.csv')
+second_df = pd.read_csv('second_grade.csv')
 
 print('-'*100)
 
 # prompt user to select a grade
-pick_grade = input('Choose your grade:\n\nPress 0 for Preparatory\nPress 1 for 1st Theory\n\n: ')
+pick_grade = input('Choose your grade:\n\nPress 0 for Preparatory\nPress 1 for 1st Grade\nPress 2 for 2nd Grade\n\n: ')
 
 print('\n')
 print('-'*100)  
@@ -113,6 +136,16 @@ def generate_question(grade):
 
         return question, answer, correct_answer    
 
+    elif grade == '2':
+        # select randomly a pair of question-possible answers from the second_dict
+        question, answer = random.choice(list(second_dict.items()))
+        # locate the correct answer to the question in the first dataframe
+        correct_answer = first_df.Answer[first_df.Question == question].iloc[0]
+        # remove the questions-answers pair from the dictionary
+        second_dict.pop(question)
+
+        return question, answer, correct_answer        
+
 # create a multiple choice quiz
 def generate_quiz():        
     # set a counter for the result
@@ -143,7 +176,6 @@ def generate_quiz():
 generate_quiz()
 
 
-
 while True:
     time.sleep(1)
     # prompt user to retake a quiz
@@ -152,4 +184,7 @@ while True:
     if retake == 'y':
         print('\n')
         generate_quiz()
+        continue
+    else:
+        break
     
