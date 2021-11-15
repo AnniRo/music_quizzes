@@ -118,7 +118,7 @@ third_df = pd.read_csv('third_grade.csv')
 print('-'*100)
 
 # prompt user to select a grade
-pick_grade = input('Choose your grade:\n\nPress 0 for Preparatory\nPress 1 for 1st Grade\nPress 2 for 2nd Grade\nnPress 3 for 3rd Grade\n\n: ')
+pick_grade = input('Select a grade:\n\nPress 0 for Preparatory\nPress 1 for 1st Grade\nPress 2 for 2nd Grade\nPress 3 for 3rd Grade\n: ')
 
 # generate a multiple choice question
 def generate_question(grade):
@@ -162,16 +162,22 @@ def generate_question(grade):
         third_dict.pop(question)
 
         return question, answer, correct_answer
-
+    
     else:
-        print('You didn\'t choose a grade. Do you wish to exit? (y/n)\n') 
+        print('-'*100)
+        print('\nYou didn\'t select a grade. Do you wish to exit? (y/n)') 
         user_exit = input(': ')
+        print('-'*100)
         if user_exit == 'n':
+            print('\n')
+            print('-'*100)
             print('Restarting...')
+            time.sleep(2)
             os.system('python main.py')
             
         else:
-            quit()                    
+            quit()  
+           
 
 # create a multiple choice quiz
 def generate_quiz():   
@@ -179,7 +185,8 @@ def generate_quiz():
     # set a counter for the result
     result = 0
 
-    for i in range(1):
+    # generate a quiz of 10 questions
+    for i in range(10):
 
         question, answer, correct_answer = generate_question(pick_grade)
 
@@ -209,6 +216,7 @@ def generate_quiz():
     print('-'*100)    
     print(f'You answered correctly {result} out of {i+1} questions.')
     print('-'*100)
+    return result
 
 generate_quiz()
 
@@ -222,6 +230,5 @@ while True:
         print('\n')
         generate_quiz()
         continue
-    else:
-        break
+    break
     
